@@ -1,0 +1,14 @@
+h1 {
+text-align: center ;
+	font-family: Arial;
+
+}
+.something{
+	/*background-color: blue;*/
+	color: MediumVioletRed;
+}
+#slogan{
+	background-color: LightSalmon;
+	font-size: 20pt;
+	text-align: center ;
+}
