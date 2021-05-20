@@ -1,1 +1,1 @@
-# ruby_trainee
+# barbershop
