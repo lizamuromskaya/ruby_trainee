@@ -3,10 +3,15 @@ h1 {
 	font-family: Arial;
 
 }
+
 .something{
 	/*background-color: blue;*/
 	color: MediumVioletRed;
 }
+/*.about{
+	background-color: blue;
+	color: MediumVioletRed;
+}*/
 #slogan{
 	background-color: LightSalmon;
 	font-size: 20pt;
