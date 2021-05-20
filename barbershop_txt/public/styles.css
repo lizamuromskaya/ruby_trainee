@@ -6,7 +6,9 @@ h1 {
 
 .something{
 	/*background-color: blue;*/
-	color: MediumVioletRed;
+	color: DarkSalmon;
+	font-family: Arial; 
+   	 font-size: 40pt; 
 }
 /*.about{
 	background-color: blue;

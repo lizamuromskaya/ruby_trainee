@@ -1,0 +1,28 @@
+<html>
+<head>
+<link href="/styles.css" rel="stylesheet" media="all"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body>
+<p class="something"> You can sign up here: </p>
+<form action="/"method="POST">
+	Your name: <br/>
+	<input type="text" name="user_name" /> <br/>
+	  <div class="form-group" style="width:200px">
+	Your phone: <br/>
+	<input type="text" name="phone" /> <br/>
+	
+	Date and time: <br/>
+	<input type="text" name="date_time" /> <br/>
+	   <label for="baber">Choosing a barber</label>
+  <select name="baber">
+    <option value="none" selected>Choose a barber...</option>
+    <option value="Alex">Alex</option>
+    <option value="Mike">Mike</option>
+    <option value="Juli">Juli</option>
+  </select>
+  
+	<input type="submit" class="btn btn-success"/>
+</form> 
+</body>
+</html>

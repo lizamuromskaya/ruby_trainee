@@ -6,21 +6,23 @@ get '/' do #add page http://localhost:4567
 	erb :index # erb - template engine 
 end
 
+
 post '/' do
-	@user_name = params[:user_name]
-	@phone = params[:phone]
-	@date_time=params[:date_time]
-	@password=params[:password]
-	@title="Thank you!"
-	@message="Dear, #{@user_name}, 
-	we will be waiting for you at #{@date_time}"
+  # user_name, phone, date_time
+  @user_name = params[:user_name]
+  @phone = params[:phone]
+  @date_time = params[:date_time]
+  @baber = params[:baber]
 
-	#f=File.open './public/users.txt','a' # add http://localhost:4567/users.txt
-	f=File.open 'users.txt','a'
-	f.write "User:#{@user_name}. Phone: #{@phone}. Date and time: #{@date_time}\n"
-	f.close
-	erb :message
+  @title = "Thank you!"
+  @message = "Dear #{@user_name}, we are waiting for you #{@date_time}. Your baber:#{@baber}."
 
+  # запишем в файл то, что ввёл клиент
+  f = File.open 'users.txt', 'a'
+  f.write "User: #{@user_name}, phone: #{@phone}, date and time: #{@date_time}. Baber: #{@baber}.\n"
+  f.close
+
+  erb :message
 
 end
 get '/about' do
@@ -28,6 +30,12 @@ get '/about' do
 end
 get '/admin' do
   erb :admin
+end
+get '/visit' do
+  erb :visit
+end
+get '/contacts' do
+  erb :contacts
 end
 		# Добавить зону /admin где по паролю будет выдаваться список тех, кто записался (из users.txt)
 
