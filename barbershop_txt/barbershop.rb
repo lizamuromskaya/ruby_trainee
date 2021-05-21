@@ -6,7 +6,6 @@ get '/' do #add page http://localhost:4567
 	erb :index # erb - template engine 
 end
 
-
 post '/' do
   # user_name, phone, date_time
   @user_name = params[:user_name]
