@@ -11,7 +11,7 @@ post '/' do
   # user_name, phone, date_time
   @user_name = params[:user_name]
   @phone = params[:phone]
-  @date_time = params[:date_time]
+  @date = params[:date]
   @baber = params[:baber]
 
   @title = "Thank you!"
@@ -19,7 +19,7 @@ post '/' do
 
   # запишем в файл то, что ввёл клиент
   f = File.open 'users.txt', 'a'
-  f.write "User: #{@user_name}, phone: #{@phone}, date and time: #{@date_time}. Baber: #{@baber}.\n"
+  f.write "User: #{@user_name}, phone: #{@phone}, date: #{@date}. Baber: #{@baber}.\n"
   f.close
 
   erb :message
@@ -37,6 +37,9 @@ end
 get '/contacts' do
   erb :contacts
 end
+get '/calendar' do
+  erb :calendar
+end
 		# /admin по паролю будет выдаваться список тех, кто записался (из users.txt)
 	post '/admin' do
 	  @login = params[:login]
@@ -46,6 +49,7 @@ end
 	  if @login == 'admin' && @password == 'admin'
 	    @file = File.open("./users.txt","r")
 	    erb :watch_result
+	    
 	    # @file.close - должно быть, но не работает
 	  else
 	    @report = '<p>Доступ запрещён! Неправильный логин или пароль.</p>'

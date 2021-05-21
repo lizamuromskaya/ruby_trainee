@@ -12,17 +12,33 @@
 	Your phone: <br/>
 	<input type="text" name="phone" /> <br/>
 	
-	Date and time: <br/>
-	<input type="text" name="date_time" /> <br/>
-	   <label for="baber">Choosing a barber</label>
+	 <!--Date and time: <br/> <br/>-->
+	  <form>
+  <div class="form-group">
+    <label for="inputDate">Choose date:</label>
+    <input type="date" name="date" class="form-control">
+  </div>
+</form>
+  
+	<!--<input type="text" name="date_time" /> -->
+	
+	
+	<label for="baber">Choosing a barber</label>
   <select name="baber">
     <option value="none" selected>Choose a barber...</option>
     <option value="Alex">Alex</option>
     <option value="Mike">Mike</option>
     <option value="Juli">Juli</option>
   </select>
-  
+
 	<input type="submit" class="btn btn-success"/>
 </form> 
+  
+
+
+<script type="text/javascript">
+	alert('Helloooo')
+</script>
+
 </body>
 </html>
