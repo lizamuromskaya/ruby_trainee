@@ -6,20 +6,20 @@ get '/' do #add page http://localhost:4567
 	erb :index # erb - template engine 
 end
 
-
 post '/' do
   # user_name, phone, date_time
   @user_name = params[:user_name]
   @phone = params[:phone]
   @date = params[:date]
-  @baber = params[:baber]
+  @time= params[:time]
+  @barber = params[:barber]
 
   @title = "Thank you!"
-  @message = "Dear #{@user_name}, we are waiting for you #{@date_time}. Your baber:#{@baber}."
+  @message = "Dear #{@user_name}, we are waiting for you #{@date} at #{@time}. Your barber:#{@barber}."
 
   # запишем в файл то, что ввёл клиент
   f = File.open 'users.txt', 'a'
-  f.write "User: #{@user_name}, phone: #{@phone}, date: #{@date}. Baber: #{@baber}.\n"
+  f.write "User: #{@user_name}, phone: #{@phone}, date: #{@date}, at #{@time}. Barber: #{@barber}.\n"
   f.close
 
   erb :message
@@ -49,7 +49,7 @@ end
 	  if @login == 'admin' && @password == 'admin'
 	    @file = File.open("./users.txt","r")
 	    erb :watch_result
-	    
+
 	    # @file.close - должно быть, но не работает
 	  else
 	    @report = '<p>Доступ запрещён! Неправильный логин или пароль.</p>'
