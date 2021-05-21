@@ -37,22 +37,18 @@ end
 get '/contacts' do
   erb :contacts
 end
-		# Добавить зону /admin где по паролю будет выдаваться список тех, кто записался (из users.txt)
-
-	# sinatra text file sso
+		# /admin по паролю будет выдаваться список тех, кто записался (из users.txt)
 	post '/admin' do
 	  @login = params[:login]
 	  @password = params[:password]
 
-	  # проверим логин и пароль, и пускаем внутрь или нет:
+	  # проверим логин и пароль
 	  if @login == 'admin' && @password == 'admin'
 	    @file = File.open("./users.txt","r")
 	    erb :watch_result
-	    # @file.close - должно быть, но тогда не работает. указал в erb
+	    # @file.close - должно быть, но не работает
 	  else
 	    @report = '<p>Доступ запрещён! Неправильный логин или пароль.</p>'
 	    erb :admin
 	  end
 	end
-
-
