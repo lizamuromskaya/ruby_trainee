@@ -7,29 +7,38 @@
 <p class="something"> You can sign up here: </p>
 <form action="/"method="POST">
 	Your name: <br/>
-	<input type="text" name="user_name" /> <br/>
+	<input type="text" name="user_name" placeholder="Your name"/> <br/>
 	  <div class="form-group" style="width:200px">
 	Your phone: <br/>
-	<input type="text" name="phone" /> <br/>
+	<input id="aaa" type="text" name="phone" placeholder="Your phone" /> <br/>
 	
 	 <!--Date and time: <br/> <br/>-->
 	  <form>
   <div class="form-group">
     <label for="inputDate">Choose date:</label>
-    <input type="date" name="date" class="form-control">
+    <input type="date" name="date" class="form-control" >
+
   </div>
+
+  <div class="form-group">
+    <label for="inputTime">Choose time:</label>
+    <input type="time" name="time" class="form-control">
+  </div>
+
 </form>
   
 	<!--<input type="text" name="date_time" /> -->
 	
 	
-	<label for="baber">Choosing a barber</label>
-  <select name="baber">
+	<label for="barber">Choosing a barber</label>
+  <select name="barber">
     <option value="none" selected>Choose a barber...</option>
     <option value="Alex">Alex</option>
     <option value="Mike">Mike</option>
     <option value="Juli">Juli</option>
   </select>
+
+  <br>
 
 	<input type="submit" class="btn btn-success"/>
 </form> 
@@ -37,7 +46,8 @@
 
 
 <script type="text/javascript">
-	alert('Helloooo')
+	$('#aaa').css('background-color','green');
+	//alert('Helloooo')
 </script>
 
 </body>
