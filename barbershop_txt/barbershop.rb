@@ -6,26 +6,22 @@ get '/' do #add page http://localhost:4567
 	erb :index # erb - template engine 
 end
 
-post '/' do
-  # user_name, phone, date_time
+post '/visit' do
   @user_name = params[:user_name]
   @phone = params[:phone]
-  @date = params[:date]
-  @time= params[:time]
+  @datetime = params[:datetime]
   @barber = params[:barber]
-
+  @color=params[:color]
   @title = "Thank you!"
-  @message = "Dear #{@user_name}, we are waiting for you #{@date} at #{@time}. Your barber:#{@barber}."
-
-  # запишем в файл то, что ввёл клиент
+  @message = "Dear #{@user_name}, we are waiting for you #{@datetime}. Your barber:#{@barber}. Color:"
+  
   f = File.open 'users.txt', 'a'
-  f.write "User: #{@user_name}, phone: #{@phone}, date: #{@date}, at #{@time}. Barber: #{@barber}.\n"
+  f.write "User: #{@user_name}, phone: #{@phone}, date and time: #{@datetime}. Barber: #{@barber}.Color #{@color}\n"
   f.close
-
   erb :message
-
 end
 get '/about' do
+ # @error='something wrong!'
   erb :about
 end
 get '/admin' do
