@@ -28,8 +28,6 @@ post '/visit' do
     return erb :visit
   end
 
-
-
   f = File.open 'users.txt', 'a'
   f.write "User: #{@user_name}, phone: #{@phone}, date and time: #{@datetime}. Barber: #{@barber}.Color #{@color}\n"
   f.close
