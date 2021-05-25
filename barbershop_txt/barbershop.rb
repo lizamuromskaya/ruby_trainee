@@ -15,6 +15,17 @@ post '/visit' do
   @title = "Thank you!"
   @message = "Dear #{@user_name}, we are waiting for you #{@datetime}. Your barber:#{@barber}. Color:"
   
+  if @user_name==''
+    @error='Enter your name!'
+    return erb :visit
+  end
+   if @phone==''
+    @error='Enter your phone number!'
+    return erb :visit
+  end
+
+
+
   f = File.open 'users.txt', 'a'
   f.write "User: #{@user_name}, phone: #{@phone}, date and time: #{@datetime}. Barber: #{@barber}.Color #{@color}\n"
   f.close
