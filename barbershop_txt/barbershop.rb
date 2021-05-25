@@ -18,11 +18,10 @@ post '/visit' do
   hh={ :user_name =>'Enter your name',
         :phone=>'Enter your phone number',
         :datetime=>'Enter date'}
-  hh.each do |key,value|
-    if params[key]==''
-      @error=hh[key]
-      return erb :visit
-    end
+
+  @error=hh.select {|key,_| params[key]==""}.values.join(", ")
+  if @error !=''
+    return erb :visit
   end
 
   f = File.open 'users.txt', 'a'
@@ -30,6 +29,12 @@ post '/visit' do
   f.close
   erb :message
 end
+
+def is_parameters_empty? hh
+end
+
+
+
 get '/about' do
  # @error='something wrong!'
   erb :about
