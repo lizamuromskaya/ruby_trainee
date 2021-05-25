@@ -17,10 +17,14 @@ post '/visit' do
   
   if @user_name==''
     @error='Enter your name!'
-    return erb :visit
   end
    if @phone==''
     @error='Enter your phone number!'
+  end
+    if @datetime==''
+    @error='Enter date!'
+  end
+  if @error!=''
     return erb :visit
   end
 
