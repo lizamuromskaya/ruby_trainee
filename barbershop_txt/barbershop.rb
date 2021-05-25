@@ -15,17 +15,14 @@ post '/visit' do
   @title = "Thank you!"
   @message = "Dear #{@user_name}, we are waiting for you #{@datetime}. Your barber:#{@barber}. Color:"
   
-  if @user_name==''
-    @error='Enter your name!'
-  end
-   if @phone==''
-    @error='Enter your phone number!'
-  end
-    if @datetime==''
-    @error='Enter date!'
-  end
-  if @error!=''
-    return erb :visit
+  hh={ :user_name =>'Enter your name',
+        :phone=>'Enter your phone number',
+        :datetime=>'Enter date'}
+  hh.each do |key,value|
+    if params[key]==''
+      @error=hh[key]
+      return erb :visit
+    end
   end
 
   f = File.open 'users.txt', 'a'
