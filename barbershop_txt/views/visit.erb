@@ -19,14 +19,14 @@ $(function() {
 </script>
 
 
-
 <p class="something"> You can sign up here: </p>
+
 <form action="/visit"method="POST">
-	Your name: <br/>
-	<input type="text" name="user_name" placeholder="Your name"/> <br/>
+	<label>Your name: </label><br/>
+	<input type="text" name="user_name" placeholder="Your name" value="<%= @user_name %>"/> <br/>
 	  <div class="form-group" style="width:200px">
-	Your phone: <br/>
-	<input type="text" name="phone" placeholder="Your phone" /> <br/>
+	<label>Your phone: </label>
+	<input type="text" name="phone" placeholder="Your phone" value="<%= @phone %>"/> <br/>
 	
 	 <!--Date and time: <br/> <br/>-->
 	  <form>
