@@ -34,7 +34,6 @@ def is_parameters_empty? hh
 end
 
 
-
 get '/about' do
  # @error='something wrong!'
   erb :about
