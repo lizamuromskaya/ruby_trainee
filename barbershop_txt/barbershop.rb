@@ -1,6 +1,12 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sqlite3'
+
+
+
+
+
 
 get '/' do #add page http://localhost:4567
 	erb :index # erb - template engine 

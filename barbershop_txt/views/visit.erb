@@ -8,9 +8,7 @@
 <script type="text/javascript">
 
 $(function() {
-  // тут я могу написать любой javascript код, который исполнится
-  // после загрузки страницы
-
+  // тут я могу написать любой javascript код, который исполнится после загрузки страницы
   $('#color').simplecolorpicker();
   $.datetimepicker.setLocale('ru');
   $('#datetimepicker').datetimepicker()
@@ -42,9 +40,9 @@ $(function() {
 	<label for="barber">Choosing a barber</label>
   <select name="barber">
     <option value="none" selected>Choose a barber...</option>
-    <option value="Alex">Alex</option>
-    <option value="Mike">Mike</option>
-    <option value="Juli">Juli</option>
+    <option <%= @barber=='Alex' ? 'selected':''%>>Alex</option>
+    <option <%= @barber=='Mike' ? 'selected':''%>>Mike</option>
+    <option <%= @barber=='Juli' ? 'selected':''%>>Juli</option>
   </select>
 </div>
   
