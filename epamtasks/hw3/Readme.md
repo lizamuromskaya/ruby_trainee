@@ -1,19 +1,5 @@
 ## HW03
 
-- use `Ruby >= 2.7`
-- please create fork from the https://github.com/labs-ruby/homeworks-2021 (should be
-  already done)
-- then create a new branch `my_hw_03` (!)
-- and go to the directory to `HW03`
-- create a folder with your name `Name_Surname`
-- inside the folder create a file .rb for every task, for example `name_surname_hw_03_t_01.rb` 
-- HARD WORK!
-- and then create a PR (pull request) containing your changes
-- you homeworks should be checked by `rubocop`. So, please 
-  correct you code if there is a request from the rubocop (https://github.com/rubocop-hq/ruby-style-guide).
-
-### Tasks:
-
 #### 1. at the input of method `task_1` (read "variable") is sent text:
 
 ```bash
