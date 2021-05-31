@@ -3,9 +3,22 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 #ctrl+/
+def is_barber_exists? db,name
+  db.execute('select * from Barbers where name=?',[name]).length>0
+end
+
+def seed_db db,barbers
+  barbers.each do |barber|
+    if !is_barber_exists? db,barber
+      db.execute 'insert into Barbers (name) values (?)',[barber]
+    end
+  end
+end
 
  def get_db
-  return SQLite3::Database.new 'barbershop.db'
+  db=SQLite3::Database.new 'barbershop.db'
+  db.results_as_hash=true
+  return db
  end
  
 configure do
@@ -22,12 +35,26 @@ configure do
       "barber" TEXT,
       "color" TEXT
     )'
+    db.execute 'CREATE TABLE IF NOT EXISTS 
+    "Barbers"
+    (
+      "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+      "name" TEXT
+    )'
+    seed_db db,['Alex','Ann','Jul']
 
 end
 
 get '/' do #add page http://localhost:4567
 	erb :index # erb - template engine 
 end
+get '/show' do 
+  db = get_db
+  @results=db.execute 'select * from Users order by id'
+  erb :showusers
+end
+
+
 
 post '/visit' do
   @user_name = params[:user_name]
@@ -93,10 +120,9 @@ end
 
 	  # проверим логин и пароль
 	  if @login == 'admin' && @password == 'admin'
-	    @file = File.open("./users.txt","r")
-	    erb :watch_result
+	    #@file = File.open("./users.txt","r")
+	    #erb :watch_result
 
-	    # @file.close - должно быть, но не работает
 	  else
 	    @report = '<p>Доступ запрещён! Неправильный логин или пароль.</p>'
 	    erb :admin
