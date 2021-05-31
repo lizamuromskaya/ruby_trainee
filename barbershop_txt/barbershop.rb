@@ -2,11 +2,28 @@ require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
+#ctrl+/
 
+ def get_db
+  return SQLite3::Database.new 'barbershop.db'
+ end
+ 
+configure do
+  #запуск при инициализации
+  db = get_db
 
+  db.execute 'CREATE TABLE IF NOT EXISTS 
+    "Users"
+    (
+      "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+      "username" TEXT,
+      "phone" TEXT,
+      "datetime" TEXT,
+      "barber" TEXT,
+      "color" TEXT
+    )'
 
-
-
+end
 
 get '/' do #add page http://localhost:4567
 	erb :index # erb - template engine 
@@ -26,15 +43,28 @@ post '/visit' do
         :datetime=>'Enter date'}
 
   @error=hh.select {|key,_| params[key]==""}.values.join(", ")
+  
   if @error !=''
     return erb :visit
   end
 
-  f = File.open 'users.txt', 'a'
-  f.write "User: #{@user_name}, phone: #{@phone}, date and time: #{@datetime}. Barber: #{@barber}.Color #{@color}\n"
-  f.close
+  db=get_db
+  db.execute 'insert into 
+  Users 
+  (
+    username,
+    phone,
+    datetime,
+    barber,
+    color
+  )
+  values (?,?,?,?,?)', [@user_name, @phone, @datetime, @barber, @color]
+  #f = File.open 'users.txt', 'a'
+  #f.write "User: #{@user_name}, phone: #{@phone}, date and time: #{@datetime}. Barber: #{@barber}.Color #{@color}\n"
+  #f.close
   erb :message
 end
+
 
 def is_parameters_empty? hh
 end
@@ -72,3 +102,4 @@ end
 	    erb :admin
 	  end
 	end
+
