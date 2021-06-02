@@ -1,3 +1,3 @@
-# barbershop
+# barbershop (Ruby && Sinatra)
 # tasks from epam ruby lab
-# blog
+# blog (Ruby && Sinatra)
