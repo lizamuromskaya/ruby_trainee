@@ -18,13 +18,15 @@ configure do
 	@db.execute 'create table if not exists Posts
 	(
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		outhor TEXT,
 		created_date DATE,
 		content TEXT
 	)'
-
+		# DEFAULT 'Anonymous'
 	@db.execute 'create table if not exists Comments
 	(
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		outhor TEXT,
 		created_date DATE,
 		content TEXT,
 		post_id integer
@@ -43,6 +45,7 @@ get '/new' do
 end
 
 post '/new' do
+	outhor = params[:outhor]
 	content = params[:content]
 
 	if content.length <= 0
@@ -50,7 +53,7 @@ post '/new' do
 		return erb :new
 	end
 
-	@db.execute 'insert into Posts (content, created_date) values (?, datetime())', [content]
+	@db.execute 'insert into Posts (outhor, content, created_date) values (?,?, datetime())', [outhor,content]
 
 	redirect to '/'
 end
@@ -71,13 +74,20 @@ end
 
 
 post '/details/:post_id' do
+	outhor = params[:outhor]
 
 	post_id = params[:post_id]
 
 	content = params[:content]	
 
+	if content.length <= 0
+		@error = 'Type comment text'
+		return erb :details
+	end
+
 	@db.execute 'insert into Comments
 		(
+			outhor,
 			content,
 			created_date,
 			post_id
@@ -85,9 +95,10 @@ post '/details/:post_id' do
 			values
 		(
 			?,
+			?,
 			datetime(),
 			?
-		)', [content, post_id]
+		)', [outhor,content, post_id]
 
 
 	redirect to('/details/' + post_id)
