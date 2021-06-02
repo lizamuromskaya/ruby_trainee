@@ -13,6 +13,16 @@ before do
 	init_db   # индициализация БД
 end
 
+configure do
+	init_db
+	@db.execute 'create table if not exists Posts
+	(
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		created_date DATE,
+		content TEXT
+	)'
+end
+
 get '/' do
 	erb "Hello!"
 end
@@ -23,5 +33,10 @@ end
 
 post '/new' do
 	content=params[:content]
+
+	if content.length<=0
+		@error='Enter your post!'
+		return erb  :new
+	end
 	erb "You typed #{content}"
 end
