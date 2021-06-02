@@ -13,8 +13,19 @@ before do
 	init_db   # индициализация БД
 end
 
+configure do
+	init_db
+	@db.execute 'create table if not exists Posts
+	(
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		created_date DATE,
+		content TEXT
+	)'
+end
+
 get '/' do
-	erb "Hello!"
+	@results = @db.execute 'select * from Posts order by id desc'
+	erb :index
 end
 
 get '/new' do
@@ -23,5 +34,12 @@ end
 
 post '/new' do
 	content=params[:content]
+
+	if content.length<=0
+		@error='Enter your post!'
+		return erb  :new
+	end
+	@db.execute 'insert into Posts (content, created_date) values (?, datetime())', [content]
+	redirect to('/')
 	erb "You typed #{content}"
 end
