@@ -24,6 +24,16 @@ get '/' do
 	erb :index			
 end
 
+get '/clients' do
+	@clients=Client.order('created_at DESC')
+	erb :clients		
+end
+
+get '/clients/:id' do
+	@client = Client.find(params[:id])
+	erb :client
+end
+
 get '/contacts' do
 	erb "Phone: +375441111111"		
 end
