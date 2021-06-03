@@ -21,9 +21,18 @@ before do
 end 
 
 get '/' do
-	@barbers=Barber.all
-	erb :index
+	erb :index			
 end
+
+get '/barber/:id' do
+	@barbers=Barber.all
+	erb :barber
+end
+
+get '' do
+
+end
+
 
 get '/visit' do
 	@c = Client.new
