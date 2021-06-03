@@ -24,8 +24,12 @@ get '/' do
 	erb :index			
 end
 
+get '/contacts' do
+	erb "Phone: +375441111111"		
+end
+
 get '/barber/:id' do
-	@barbers=Barber.all
+	@barber = Barber.find(params[:id])
 	erb :barber
 end
 
