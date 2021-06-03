@@ -26,6 +26,16 @@ $(function() {
   </div>
 
   <div class="form-group">
+    <label for="barber">Choosing a barber</label>
+    <select name="client[barber]">
+    <option value="<%= @c.barber %>" selected>Choose a barber...</option>
+    <% @barbers.each do |item| %>
+      <option <%= @barber==item['name']? 'selected' : '' %> > <%= item['name'] %></option>
+    <% end %>
+
+  </select>
+</div>
+  <div class="form-group">
     <label>Date and time</label>
     <input id="datetimepicker" name="client[datestamp]" type="text" class="form-control" placeholder="Input date and time" value="<%= @c.datestamp %>">
   </div>
