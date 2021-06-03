@@ -15,10 +15,26 @@ end
 
 before do
 	@barbers = Barber.all
-end
+end 
 
 
 get '/' do
 	@barbers=Barber.all
 	erb :index
+end
+
+get '/visit' do
+	@c = Client.new
+  erb :visit
+end
+
+post '/visit' do
+
+	@c = Client.new params[:client]
+	if @c.save
+		erb "<h2>Thank you!</h2>"
+	else
+		#@error = @c.errors.full_messages.first
+		erb :visit
+	end
 end

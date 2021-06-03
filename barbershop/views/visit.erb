@@ -1,0 +1,55 @@
+<h2>Visit</h2>
+<p>On this page you can sign up in Barber Shop</p>
+
+
+<script type="text/javascript">
+$(function() {
+  // любой javascript код, который исполнится
+  // после загрузки страницы
+
+  $('#color').simplecolorpicker();
+  $('#datetimepicker').datetimepicker();
+
+});
+</script>
+
+
+<form action="/visit" method="POST" role="form">
+
+  <div class="form-group">
+    <label>Your name</label>
+    <input name="client[name]" type="text" class="form-control" placeholder="Your name" value="<%= @c.name %>">
+  </div>
+
+  <div class="form-group">
+    <label>Your phone</label>
+    <input name="client[phone]" type="text" class="form-control" placeholder="Your phone" value="<%= @c.phone %>">
+  </div>
+
+  <div class="form-group">
+    <label>Date and time</label>
+    <input id="datetimepicker" name="client[datestamp]" type="text" class="form-control" placeholder="Input date and time" value="<%= @c.datestamp %>">
+  </div>
+
+  <div class="form-group">
+    <label>Select colors: </label>
+    <select id="color" name="client[color]">
+      <option value="no color">No color</option>
+      <option value="#7bd148">Green</option>
+      <option value="#5484ed">Bold blue</option>
+      <option value="#a4bdfc">Blue</option>
+      <option value="#46d6db">Turquoise</option>
+      <option value="#7ae7bf">Light green</option>
+      <option value="#51b749">Bold green</option>
+      <option value="#fbd75b">Yellow</option>
+      <option value="#ffb878">Orange</option>
+      <option value="#ff887c">Red</option>
+      <option value="#dc2127">Bold red</option>
+      <option value="#dbadff">Purple</option>
+      <option value="#e1e1e1">Gray</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
