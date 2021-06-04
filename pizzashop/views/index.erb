@@ -1,2 +1,35 @@
 <h2>Welcome to Pizza Shop!</h2>
-<button class="btn btn-primary" onclick="something()">Click me!</button>
+
+<div class="row">
+
+	<% @products.each do |p| %>
+	<div class="col-md-3">
+		<div>
+			<%= p.title %>
+		</div>
+
+		<div>
+			<img src="<%= p.path_to_image %>" />
+		</div>
+
+		<div>
+			<%= p.description %>
+		</div>
+
+		<div>
+			Size: <%= p.size %> cm
+		</div>
+
+		<div>
+			Price: <%= p.price %> BYN
+		</div>
+
+		<div>
+			<!-- <button class="btn btn-sm btn-success" onclick="add_to_cart(<%= p.id %>)">Add to cart</button> -->
+		</div>
+	</div>
+	<% end %>
+
+</div>
+<br />
+<br />
