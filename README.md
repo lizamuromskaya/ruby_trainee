@@ -1,9 +1,9 @@
-#### tasks from epam ruby lab
++ #### tasks from epam ruby lab
 
-#### pizzashop (Ruby && Sinatra)
++ #### pizzashop (Ruby && Sinatra)
 
-#### barbershop with ActiveRecord (Ruby && Sinatra)
++ #### barbershop with ActiveRecord (Ruby && Sinatra)
 
-#### old_barbershop (Ruby && Sinatra)
++ #### old_barbershop (Ruby && Sinatra)
 
-#### blog (Ruby && Sinatra)
++ #### blog (Ruby && Sinatra)
