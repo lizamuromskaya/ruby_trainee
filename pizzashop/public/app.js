@@ -1,4 +1,5 @@
 
+
 function add_to_cart(id){
 	var key='product_'+id;
 	x=window.localStorage.getItem(key);
@@ -27,8 +28,6 @@ function update_orders_input(){
 
 	var orders =cart_get_orders();
 	$('#orders_input').val(orders);
-
-
 }
 
 function cart_get_orders(){
