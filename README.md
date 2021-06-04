@@ -1,4 +1,4 @@
-+ #### tasks from epam ruby lab
++ #### epamtasks => tasks from epam ruby lab
 
 + #### pizzashop (Ruby && Sinatra)
 
